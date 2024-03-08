@@ -1,3 +1,6 @@
+using AzureAppButenko.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace AzureAppButenko
 {
     public class Program
@@ -9,6 +12,13 @@ namespace AzureAppButenko
             builder.Services.AddApplicationInsightsTelemetry();
 
             // Add services to the container.
+
+            var connectionString = builder.Configuration.GetConnectionString("AzureSqlConnectionString");
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
+
             builder.Services.AddRazorPages();
 
             var app = builder.Build();

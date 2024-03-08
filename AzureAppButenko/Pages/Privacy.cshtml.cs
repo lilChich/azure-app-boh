@@ -14,7 +14,7 @@ namespace AzureAppButenko.Pages
 
         public void OnGet()
         {
-            throw new Exception("Testing Azure App Insights!!");
+            
         }
     }
 
